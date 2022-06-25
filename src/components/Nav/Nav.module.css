@@ -1,0 +1,18 @@
+.nav{
+  grid-area: n;
+  padding: 20px;
+}
+
+.item a{
+  color: white;
+  text-decoration: none;
+}
+
+.item:hover{
+    transform: scale(1.05);
+    transition: transform .2s;
+}
+
+a.active{
+  color:gold;
+}
