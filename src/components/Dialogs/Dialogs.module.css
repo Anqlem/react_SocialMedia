@@ -1,7 +1,39 @@
 .dialogs{
     display: grid;
     grid-template-columns: 2fr 10fr;
-    
+    font-size: 13px;
+}
+
+
+.msgInput{
+    max-height: 60px;
+    display: flex;
+    border-top: 1px solid #424242;
+    justify-content: center;
+}
+
+.iconButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    fill: #b2b2b2;
+}
+
+.iconButton:hover{
+    cursor: pointer;
+    color:white
+}
+
+.textInput{
+    min-height: 15px;
+    width: 50%;
+    border-radius: 5px;
+    background: transparent;
+    margin: 10px;
+    color: white;
+    padding: 10px;
+    resize: none;
+    justify-content: bottom;
 }
 
 .user{
@@ -38,7 +70,6 @@
 
 
 .messages{
-    padding: 20px;
     font-size: 13px;
 }
 
@@ -53,7 +84,7 @@
 
 text{
     max-width: 50%;
-    margin: 5px;
+    margin: 10px 20px 10px 20px;
     padding: 10px;
     background: #504f52;
     border-radius: 5px;

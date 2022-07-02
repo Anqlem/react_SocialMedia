@@ -1,3 +1,5 @@
+import { renderEntireTree } from '../render'
+
 let state = {
     profilePage:{
         posts: [
@@ -22,9 +24,25 @@ let state = {
             {id:3, message:'Lorem ipsum dolor sit amet.'},
             {id:4, message:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse similique numquam possimus eum quasi consectetur facilis dicta beatae veniam cumque id velit odit temporibus asperiores, nemo tempora provident perspiciatis quod fugit, laboriosam, eius itaque? Facere quaerat impedit eligendi voluptatibus enim!'},
             {id:5, message:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut magnam tempore reiciendis esse eum omnis unde impedit, rem dolorum sit assumenda dicta dolor tempora culpa ducimus neque libero, at eius quam perferendis aspernatur! Excepturi, voluptas!'}
-
-        ]
+        ],
+        newMessageText: ''
     }
+}
+
+
+export let addMessage = () =>{
+    let newMessage={
+        id: 6,
+        message: state.messagesPage.newMessageText
+    }
+    state.messagesPage.messages.push(newMessage);
+    state.messagesPage.newMessageText = '';
+    renderEntireTree(state);
+}
+
+export let updateNewMessageText = (inputMessage) =>{
+    state.messagesPage.newMessageText = inputMessage;
+    renderEntireTree(state);
 }
 
 
