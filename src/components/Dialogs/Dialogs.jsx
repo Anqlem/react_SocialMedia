@@ -34,12 +34,12 @@ function Dialogs(props){
     let newMessageElement = React.createRef();
 
     let newMessage=()=>{
-        props.addMessage();
+        props.dispatch({type:'ADD-MESSAGE'});
     }
 
     let updateMessageText=()=>{
         let message=newMessageElement.current.value;
-        props.updateNewMessageText(message);
+        props.dispatch({type:'UPDATE-NEW-MESSAGE-TEXT' , inputMessage: message});
     }
     
     return(

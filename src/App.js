@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
 import Profile from './components/Profile/Profile';
@@ -14,7 +13,7 @@ function App(props) {
         <Nav/>
         <div className='app-wrapper-content'>
           <Routes>
-            <Route path='/dialogs' element={<Dialogs messagePageData={props.state.messagesPage} addMessage={props.addMessage} updateNewMessageText={props.updateNewMessageText}/>} />
+            <Route path='/dialogs' element={<Dialogs messagePageData={props.state.messagesPage} dispatch={props.dispatch}/>} />
             <Route path='/profile' element={<Profile postData={props.state.profilePage.posts}/>} />
           </Routes>
         </div>
