@@ -1,6 +1,7 @@
 import React from 'react';
 import dia from './Dialogs.module.css';
 import { NavLink } from 'react-router-dom';
+import { addMessageAction, updateMessageTextAction } from '../../redux/dialogs-reducer';
 
 const active = ({isActive})=>isActive ? dia.active : dia.dialog;
 
@@ -10,7 +11,7 @@ function DialogItem(props){
     return(
         <NavLink to={'./' + props.id} className={active}>
             <div className={dia.user}>
-                <img className={dia.pic} src={props.src}/>
+                <img className={dia.pic} src={props.src} alt='poop'/>
                 {props.name}
             </div>
         </NavLink>
@@ -34,12 +35,12 @@ function Dialogs(props){
     let newMessageElement = React.createRef();
 
     let newMessage=()=>{
-        props.dispatch({type:'ADD-MESSAGE'});
+        props.dispatch(addMessageAction());
     }
 
     let updateMessageText=()=>{
         let message=newMessageElement.current.value;
-        props.dispatch({type:'UPDATE-NEW-MESSAGE-TEXT' , inputMessage: message});
+        props.dispatch(updateMessageTextAction(message));
     }
     
     return(
@@ -51,7 +52,7 @@ function Dialogs(props){
                 { messageElements }
                 <div className={dia.msgInput}>
                     <textarea className={dia.textInput} onChange={updateMessageText} value={props.messagePageData.newMessageText} ref={newMessageElement} placeholder='Write a message...'></textarea>
-                    <span className={dia.iconButton} onClick={newMessage}><img src='https://www.svgrepo.com/show/71915/paper-plane.svg' height='24px' width='24px'></img></span>
+                    <span className={dia.iconButton} onClick={newMessage}><img src='https://www.svgrepo.com/show/71915/paper-plane.svg' height='24px' width='24px' alt='poop'></img></span>
                 </div>
             </div>
             

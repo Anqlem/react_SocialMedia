@@ -1,3 +1,5 @@
+import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./profile-reducer";
 
 
 let store = {
@@ -20,7 +22,8 @@ let store = {
                 {id:1, message:'xuyPopa Pisa))))00))', likes:50},
                 {id:2, message:'PisaPopa))))', likes:10},
                 {id:3, message:'Oleg Krutoi', likes:30}
-            ]
+            ],
+            newPostText: ''
             
         },
     
@@ -44,19 +47,10 @@ let store = {
     },
     
     dispatch(action){
-        if (action.type === 'ADD-MESSAGE'){
-            let newMessage={
-                id: 6,
-                message: this._state.messagesPage.newMessageText
-            }
-            this._state.messagesPage.messages.push(newMessage);
-            this._state.messagesPage.newMessageText = '';
-            this.renderEntireTree(this._state);
-        }
-        else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT'){
-            this._state.messagesPage.newMessageText = action.inputMessage;
-            this.renderEntireTree(this._state);
-        }
+        this._state.messagesPage = dialogsReducer(this._state.messagesPage, action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        
+        this.renderEntireTree(this._state);
     }
 }
 
