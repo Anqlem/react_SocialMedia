@@ -1,11 +1,8 @@
 import React from 'react';
 import dia from './Dialogs.module.css';
 import { NavLink } from 'react-router-dom';
-import { addMessageAction, updateMessageTextAction } from '../../redux/dialogs-reducer';
 
 const active = ({isActive})=>isActive ? dia.active : dia.dialog;
-
-
 
 function DialogItem(props){
     return(
@@ -28,19 +25,20 @@ function Message(props){
 
 
 function Dialogs(props){
-    
+    debugger
+
     let dialogElements = props.messagePageData.dialogs.map (d => <DialogItem name={d.name} id={d.id} src={d.pic}/>)
     let messageElements = props.messagePageData.messages.map (m => <Message message={m.message}/>)
 
     let newMessageElement = React.createRef();
 
-    let newMessage=()=>{
-        props.dispatch(addMessageAction());
+    let onNewMessage=()=>{
+        props.newMessage();
     }
 
-    let updateMessageText=()=>{
+    let onUpdateMessageText=()=>{
         let message=newMessageElement.current.value;
-        props.dispatch(updateMessageTextAction(message));
+        props.updateMessageText(message);
     }
     
     return(
@@ -51,8 +49,8 @@ function Dialogs(props){
             <div className={dia.messages}>
                 { messageElements }
                 <div className={dia.msgInput}>
-                    <textarea className={dia.textInput} onChange={updateMessageText} value={props.messagePageData.newMessageText} ref={newMessageElement} placeholder='Write a message...'></textarea>
-                    <span className={dia.iconButton} onClick={newMessage}><img src='https://www.svgrepo.com/show/71915/paper-plane.svg' height='24px' width='24px' alt='poop'></img></span>
+                    <textarea className={dia.textInput} onChange={onUpdateMessageText} value={props.messagePageData.newMessageText} ref={newMessageElement} placeholder='Write a message...'></textarea>
+                    <span className={dia.iconButton} onClick={onNewMessage}><img src='https://www.svgrepo.com/show/71915/paper-plane.svg' height='24px' width='24px' alt='poop'></img></span>
                 </div>
             </div>
             
