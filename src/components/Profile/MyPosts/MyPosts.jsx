@@ -4,7 +4,7 @@ import posts from './MyPosts.module.css';
 
 function MyPosts(props){
 
-  let postElements = props.profilePageData.posts.map(p => <Post message={p.message} likes={p.likes}/>);
+  let postElements = props.profilePageData.posts.map(p => <Post message={p.message} key={p.id} likes={p.likes}/>);
 
   let newPostElement = React.createRef();
 

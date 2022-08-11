@@ -13,6 +13,9 @@ function Nav(){
                 <NavLink to='/dialogs' className={active}>Messages</NavLink>
             </div>
             <div className={classes.item}>
+                <NavLink to='/users' className={active}>Users</NavLink>
+            </div>
+            <div className={classes.item}>
                 <NavLink to='/news' className={active}>News</NavLink>
             </div>
             <div className={classes.item}>
