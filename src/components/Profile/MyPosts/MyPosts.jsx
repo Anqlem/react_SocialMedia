@@ -1,6 +1,7 @@
 import React from 'react';
 import Post from './Post/Post';
 import posts from './MyPosts.module.css';
+import axios from '../../../axios.js'
 
 function MyPosts(props){
 
